@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <PageInProgress/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import PageInProgress from "./pages/pageInProgress.vue"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PageInProgress
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+body{
+  margin: 0;
+}
+
+#app{
+  background: linear-gradient(75deg, rgba(88,239,236,1) 10%, rgba(9,166,243,1) 130%);
+  min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
 }
 </style>
