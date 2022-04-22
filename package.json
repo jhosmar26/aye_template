@@ -10,7 +10,9 @@
   "dependencies": {
     "contentful": "^9.1.19",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "dotenv": "^16.0.0",
+    "vue": "^2.6.11",
+    "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",

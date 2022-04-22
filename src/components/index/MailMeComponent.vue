@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="contacto">
     <!-- Change the colour #f8fafc to match the previous section colour -->
     <svg class="hidden wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -19,22 +19,37 @@
     </svg>
     <section class="container mx-auto text-center py-6 mb-12">
 
-      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">Trabaja con nosotros</h1>
+      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">Trabaja con nosotros</h2>
       <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
 
       <div class="hidden sm:block">
-        <h3 class="my-4 text-3xl leading-tight">Correo Electrónico: ebportillo@ayeconstrucciones.com</h3>
-        <h3 class="my-4 text-3xl leading-tight">Hablemos: 994004219</h3>
+        <h3 class="my-4 text-3xl leading-tight text-white">
+          Correo Electrónico: <span class="text-xl">{{contactEmail}}</span>
+        </h3>
+        <h3 class="my-4 text-3xl leading-tight text-white">
+          Hablemos: {{contactNumber}}
+        </h3>
       </div>
 
       <div class="block sm:hidden">
-        <h3 class="my-4 text-3xl leading-tight">Correo Electrónico: ebportillo@ayeconstrucciones.com</h3>
-        <h3 class="my-4 text-3xl leading-tight">Hablemos: 994004219</h3>
+        <h3 class="my-4 text-3xl leading-tight text-white">
+          <a :href="'mailto:' + contactEmail">
+            Correo Electrónico: <span class="text-xl break-words">{{contactEmail}}</span>
+          </a>
+        </h3>
+        <h3 class="my-4 text-3xl leading-tight text-white">
+          <a :href="'tel:' + contactNumber">Hablemos: {{contactNumber}}</a>
+        </h3>
       </div>
 
-      <a class="hidden sm:inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Envíanos un mail</a>
+      <a
+        :href="'mailto:' + contactEmail"
+        class="hidden sm:inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg cursor-pointer"
+      >
+        Envíanos un mail
+      </a>
 
     </section>
   </div>
@@ -42,8 +57,12 @@
 
 <script>
 export default ({
+  props:{
+    contactEmail: String,
+    contactNumber: String,
+  },
   data() {
     return{}
-  }
+  },
 })
 </script>

@@ -1,19 +1,19 @@
 <template>
-  <div class="pt-8">
+  <div class="pt-8 pb-20">
 
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
       <!--Left Col-->
       <div class="flex flex-col w-full md:w-2/5 justify-center text-center md:text-left">
-        <h1 class="my-4 text-5xl font-bold leading-tight">{{title}}</h1>
+        <h1 class="my-4 text-5xl font-bold leading-tight text-white">{{title}}</h1>
         <p
           v-for="subtitle, key in subtitles"
           :key="key"
-          class="leading-normal text-2xl mb-8"
+          class="leading-normal text-2xl mb-8 text-white"
         >
           {{subtitle}}
         </p>
 
-        <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Hablemos de proyectos</button>
+        <a href="#contacto" class="mx-auto hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Hablemos de proyectos</a>
       </div>
 
       <!--Right Col-->
@@ -42,7 +42,8 @@
   </div>
 </template>
 <script>
-var contentful = require('contentful');
+import { createClient } from "@/plugins/contentful.js"
+const client = createClient();
 
 export default {
   name: 'HeroSection',
@@ -54,17 +55,18 @@ export default {
     }
   },
   created() {
-    var client = contentful.createClient({
-      space: 'ku6h3eszzwt3',
-      accessToken: '-oP3NEUNsndgekzWfmsI3oY0cZJFN743w7UP_EsjonA',
-    });
     const cur = this;
-    client.getEntry('7yjCq1ERs9Z97yrnihZjuK').then(function (entry) {
-      // logs the entry metadata
-      cur.hero_img = entry.fields.imagen.fields.file.url
+    client.getEntry('17JmkNHLAMjSB2ahopJ0dW').then(function (entry) {
+      cur.hero_img = entry.fields.bannerImage.fields.file.url
       cur.title = entry.fields.title
-      cur.subtitles = entry.fields.subtitulos
+      cur.subtitles = entry.fields.subtitles
     });
   }
 }
 </script>
+
+<style scoped>
+  .custom-height{
+    min-height: 600px;
+  }
+</style>
